@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900">
+  <rect width="900" height="900" fill="#FBF5E9"/>
+  <circle cx="450" cy="395" r="145" fill="#F3ECDC"/>
+  <g fill="none" stroke="#1B5E3F" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M360 351h42l19-27h58l19 27h42v118H360z"/>
+    <circle cx="450" cy="408" r="33"/>
+  </g>
+  <path d="M418 554h64" stroke="#DB7B2B" stroke-width="5" stroke-linecap="round"/>
+  <text x="450" y="601" text-anchor="middle" font-family="Georgia,serif" font-size="32" fill="#123C2C">Estación Frutal</text>
+  <text x="450" y="647" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" fill="#655943">Fotografía por añadir</text>
+</svg>
