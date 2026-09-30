@@ -1,6 +1,6 @@
-import { createCustomerOrder } from '../src/application/create-order.mjs';
-import { validateOrderItems, validateTableNumber, canTransition } from '../src/domain/order.mjs';
-import { createSupabaseOrderRepository } from '../src/infrastructure/supabase-order-repository.mjs';
+import { createCustomerOrder } from '../../src/application/create-order.mjs';
+import { validateOrderItems, validateTableNumber, canTransition } from '../../src/domain/order.mjs';
+import { createSupabaseOrderRepository } from '../../src/infrastructure/supabase-order-repository.mjs';
 
 const json = (statusCode, body) => ({ statusCode, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store', ...(process.env.SITE_ORIGIN ? { 'access-control-allow-origin': process.env.SITE_ORIGIN, vary: 'Origin' } : {}) }, body: JSON.stringify(body) });
 const env = () => {
@@ -16,6 +16,7 @@ async function db(path, options = {}) {
   return body ? JSON.parse(body) : null;
 }
 async function rpc(name, args) { return db(`rpc/${name}`, { method: 'POST', body: JSON.stringify(args) }); }
+const orderRepository = createSupabaseOrderRepository(rpc, db);
 async function staff(event, roles = ['waiter', 'admin']) {
   const token = event.headers.authorization?.replace(/^Bearer\s+/i, '');
   if (!token) throw Object.assign(new Error('Inicia sesión para continuar.'), { status: 401 });
