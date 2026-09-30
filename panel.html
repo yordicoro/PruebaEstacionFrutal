@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Estación Frutal — Personal</title><link rel="stylesheet" href="panel.css"></head>
+<body>
+<header class="panel-top"><a href="index.html">← Catálogo</a><strong>Estación Frutal</strong><span id="roleLabel"></span></header>
+<main class="panel-main">
+  <section id="loginView" class="panel-card login-card"><p class="eyebrow">PERSONAL AUTORIZADO</p><h1>Iniciar sesión</h1><form id="loginForm"><label>Correo<input id="loginEmail" type="email" autocomplete="username" required></label><label>Contraseña<input id="loginPassword" type="password" autocomplete="current-password" required></label><button class="primary">Ingresar</button><p id="loginError" class="error" role="alert"></p></form></section>
+  <section id="staffView" hidden>
+    <div class="panel-heading"><div><p class="eyebrow">OPERACIÓN</p><h1 id="welcomeTitle">Pedidos</h1></div><button id="logout" class="secondary">Cerrar sesión</button></div>
+    <nav id="tabs" class="tabs" aria-label="Secciones del panel"><button data-view="orders" class="active">Pedidos</button><button data-view="cash" data-admin hidden>Caja y ventas</button><button data-view="products" data-admin hidden>Menú</button><button data-view="users" data-admin hidden>Meseros</button></nav>
+    <section id="ordersView" class="view">
+      <div class="order-toolbar"><label class="search-code">Consultar código de cliente<input id="codeSearch" inputmode="numeric" maxlength="4" placeholder="0000"></label><button id="searchCode" class="secondary">Buscar código</button><button id="refreshOrders" class="secondary">Actualizar</button></div>
+      <div id="orderNotice" role="status" class="notice"></div>
+      <div class="order-layout"><div><h2>Pedidos activos</h2><div id="ordersList" class="orders-list"></div></div>
+      <form id="manualForm" class="panel-card manual-form"><h2>Tomar pedido</h2><p>Para pedidos realizados directamente al mesero.</p><label>Mesa<select id="manualTable" required></select></label><label>Producto<select id="manualProduct" required></select></label><label>Cantidad<input id="manualQuantity" type="number" min="1" max="99" value="1" required></label><button id="manualAdd" class="secondary" type="button">Añadir producto</button><p id="manualCart" class="notice">No has añadido productos.</p><button class="primary">Registrar pedido</button></form></div>
+    </section>
+    <section id="cashView" class="view" hidden><div class="order-layout"><div class="panel-card"><h2>Turno de caja</h2><div id="cashState"></div><form id="openCashForm"><label>Monto inicial (S/)<input id="openingAmount" type="number" min="0" step="0.01" value="0.00" required></label><button class="primary">Abrir caja</button></form><form id="closeCashForm" hidden><label>Efectivo contado (S/)<input id="countedAmount" type="number" min="0" step="0.01" required></label><label>Observación<input id="cashNote" maxlength="500"></label><button class="primary">Cerrar y cuadrar caja</button></form></div><div class="panel-card"><h2>Ventas cobradas</h2><div class="date-range"><label>Desde<input id="salesFrom" type="date"></label><label>Hasta<input id="salesTo" type="date"></label></div><button id="loadSales" class="secondary">Consultar</button><div id="salesSummary"></div></div></div></section>
+    <section id="productsView" class="view" hidden><div class="order-layout"><form id="productForm" class="panel-card"><h2>Guardar producto</h2><label>Nombre<input id="productName" required maxlength="100"></label><label>Categoría<input id="productCategory" required maxlength="80"></label><label>Descripción<input id="productDescription" maxlength="300"></label><label>Precio (S/)<input id="productPrice" type="number" min="0" step="0.01" required></label><button class="primary">Guardar producto</button></form><div class="panel-card"><h2>Menú vigente</h2><div id="productsList"></div></div></div></section>
+    <section id="usersView" class="view" hidden><form id="userForm" class="panel-card login-card"><h2>Crear cuenta de mesero</h2><label>Correo<input id="staffEmail" type="email" required></label><label>Contraseña temporal (12 caracteres mínimo)<input id="staffPassword" type="password" minlength="12" required></label><button class="primary">Crear mesero</button><p id="userNotice" role="status"></p></form><div class="panel-card"><h2>Cuentas de mesero</h2><div id="staffList"></div></div></section>
+  </section>
+</main>
+<div id="toast" role="status" class="toast"></div><script src="panel.js" defer></script>
+</body></html>
+
+
